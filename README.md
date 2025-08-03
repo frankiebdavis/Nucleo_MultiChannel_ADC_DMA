@@ -1,6 +1,6 @@
 # STM32 Multi-Channel ADC with DMA (LDR + Potentiometer)
 
-This project uses the STM32F303RE Nucleo board to read two analog inputs — a light-dependent resistor (LDR) and a 10kΩ potentiometer — using **DMA and interrupt-based ADC**. The readings are printed to a serial terminal via UART, showing how both signals change in real time.
+This project uses the STM32F303RE Nucleo board to read two analog inputs - a light-dependent resistor (LDR) and a 10kΩ potentiometer, using **DMA and interrupt-based ADC**. The readings are printed to a serial terminal via UART, showing how both signals change in real time.
 
 It demonstrates how to:
 - Configure **multi-channel ADC** with **DMA**
@@ -90,7 +90,7 @@ When the potentiometer is at its maximum (5V), the LDR reading stays pinned near
 
 Once the potentiometer is lowered, the LDR reading responds much more noticeably to changes in light. As you cover the sensor, the value drops quickly from ~4000 to below 1500.
 
-📌 **Why this matters:** This makes the ADC input more sensitive to changes in the voltage divider — allowing the LDR’s behavior to show more clearly.
+📌 **Why this matters:** This makes the ADC input more sensitive to changes in the voltage divider, allowing the LDR’s behavior to show more clearly.
 
 ---
 
@@ -102,8 +102,6 @@ This is a great real-world illustration of how **analog voltage dividers** and *
 - But the output voltage (what the ADC reads) depends on the ratio between the LDR and the fixed resistor.
 - When starting near 3.3V or 5V, the voltage doesn't shift much unless the LDR changes drastically.
 - Lowering the potentiometer lets you "zoom in" on the LDR’s dynamic range.
-
-This project shows not just how to set up DMA and ADCs — it teaches you how to **interpret** analog signals meaningfully.
 
 ---
 
