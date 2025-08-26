@@ -18,12 +18,15 @@ How can two analog sensors be read **simultaneously and efficiently** on an STM3
 - **UART2 Output:** Formatted sensor values are transmitted at 38400 baud.  
 - **Main Loop:** Copies ADC values from the DMA buffer and prints them once per second.
 
-Key code excerpt:  
+Key code excerpt: 
+```c
 HAL_ADC_Start_DMA(&hadc1, (uint32_t *) rawValues, 2);  
 lux = rawValues[0];  // LDR sensor (PA0)  
 pot = rawValues[1];  // Potentiometer (PA1)  
 sprintf(msg, "Light: %hu     POT: %hu\r\n", lux, pot);  
-HAL_UART_Transmit(&huart2, (uint8_t *) msg, strlen(msg), HAL_MAX_DELAY);  
+HAL_UART_Transmit(&huart2, (uint8_t *) msg, strlen(msg), HAL_MAX_DELAY);
+
+```
 
 ---
 
@@ -31,7 +34,7 @@ HAL_UART_Transmit(&huart2, (uint8_t *) msg, strlen(msg), HAL_MAX_DELAY);
 
 Example serial output when adjusting the potentiometer and covering the LDR:
 
-```c
+```
 Light: 4095     POT: 4095  <-- potentiometer max, LDR covered
 Light: 4023     POT: 4095
 Light: 4021     POT: 3248  <-- potentiometer lowered
