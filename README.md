@@ -4,13 +4,13 @@ This project uses the **STM32F303RE Nucleo board** to read two analog inputs —
 
 ---
 
-## ❓ Problem
+## Problem
 
 How can two analog sensors be read **simultaneously and efficiently** on an STM32 without polling each channel manually?
 
 ---
 
-## 🔨 Method
+## Method
 
 - **Multi-channel ADC1 with DMA:** Two inputs scanned continuously (PA0 and PA1).  
 - **DMA Buffer:** Stores both readings in `rawValues[2]`.  
@@ -27,7 +27,7 @@ HAL_UART_Transmit(&huart2, (uint8_t *) msg, strlen(msg), HAL_MAX_DELAY);
 
 ---
 
-## ✅ Result
+## Result
 
 Example serial output when adjusting the potentiometer and covering the LDR:
 
@@ -51,7 +51,7 @@ Two clear behaviors emerge:
 
 ---
 
-## 🔧 Hardware
+## Hardware
 
 - STM32F303RE Nucleo board  
 - Breadboard  
@@ -60,31 +60,9 @@ Two clear behaviors emerge:
 - 10kΩ potentiometer  
 - Jumper wires  
 
-### Circuit
-
-          LDR Voltage Divider (PA0)
-          --------------------------
-             3.3V
-              │
-            [ LDR ]
-              │────── PA0 (ADC1_CH1)
-              │
-            [10kΩ]
-              │
-             GND
-
-
-     Potentiometer Divider (PA1)
-     ---------------------------
-     GND ─────┬───────┐
-              │       ▼
-            [ POT ] <─── 5V
-              │
-             PA1 (ADC1_CH2)
-
 ---
 
-## 💻 Testing
+## Testing
 
 1. Flash the program using **STM32CubeIDE**.  
 2. Open a serial terminal (PuTTY, TeraTerm, etc.)  
@@ -97,7 +75,7 @@ Two clear behaviors emerge:
 
 ---
 
-## 🧠 Takeaways
+## Takeaways
 
 - Demonstrates **multi-channel ADC scanning with DMA**.  
 - Efficiently streams analog values without blocking CPU.  
